@@ -111,7 +111,7 @@ function User(user) {
 
 - Progressively load additional items with a "Show more" button
 - Pagination to display a limited set of data
-- Virtualized lists
+- Fake it (react-window, react-virtualized)
 
 All 3 of these do essentially the same thing: 
 
