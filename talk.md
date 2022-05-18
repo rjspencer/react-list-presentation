@@ -40,6 +40,18 @@ What industry do you work in? I would love to see an unscientific poll in the co
 
 `>>`
 
+## What is slow?
+
+Before we dig into why, lets define what "rendering slow" means.Nielsen Norman Group has been a leader in user research for decades, well before the term UX was invented. They created a set of timings that were as true in the 90s as they are today.
+
+<!-- https://www.nngroup.com/articles/response-times-3-important-limits/ -->
+
+- < 0.1 seconds: Feels instant to the user
+- < 1 second: Noticeable, but doesn't break the user's flow.
+- < 10 seconds: Roughly the limit for keeping a user's attention.
+
+`>>`
+
 ## Why are lists slow?
 
 Product wants you to build a quick thing; display some data. There are only 5 lines of data, and probably will not be much more than that, we don't need to worry about pagination they say. Six months later, there are 100 lines being displayed and it takes 10 seconds for the page to load.
@@ -52,6 +64,8 @@ Let's time some code.
 // map over stuff
 ```
 
+`>>`
+
 ### Looping isn't the problem, what next?
 
 To answer this question, first we must remember what React does. React is a render library. Your code determines how the Document Object Model (DOM) should look and React makes it happen. The browser takes the DOM and converts it into the pretty UI you want to show to the user.
@@ -62,6 +76,8 @@ Updating the DOM is relatively slow and somewhat clunky. If you've ever updated 
 
 - Declarative code to make it easier to code large SPAs
 - Efficient DOM updates for a snappy UI
+
+`>>`
 
 ### Declarative Code
 
@@ -100,19 +116,18 @@ function User(user) {
 }
 ```
 
+`>>`
+
 ### Responsive UI
+
+- Declarative code to make it easier to code large SPAs
+- Efficient DOM updates for a snappy UI
 
 The second part is what we are exploring today: a responsive UI.
 
 #### What is a responsive UI?
 
-We need to define "responsive" before we try to build towards it. Nielsen Norman Group has been a leader in user research for decades, well before the term UX was invented. They created a set of timings that were as true in the 90s as they are today.
-
-<!-- https://www.nngroup.com/articles/response-times-3-important-limits/ -->
-
-- < 0.1 seconds: Feels instant to the user
-- < 1 second: Noticeable, but doesn't break the user's flow.
-- < 10 seconds: Roughly the limit for keeping a user's attention.
+Click a button and things happen
 
 Anything over 1 second requires a loading signal and anything over 10 seconds should also provide an expected time (this usually takes around 30 seconds).
 
@@ -131,6 +146,8 @@ React can handle hundreds of elements without to much issue, but at some point, 
 Lists and tables can quickly increase the number of DOM elements on a page. Think about how many divs a single card in a list of vehicles can have, between its make, model, year, image and container, getting to 5 elements is easy. Surely, many of you have worked on far more complicated list items. If you display 20 cards, your DOM is getting `5 * 20 = 100` elements injected at one time. Is 100 a lot? No, not really, but you can see how the multiplication of these two factors can quickly grow into seriously large numbers.
 
 Let's get back to that list Product said was only going to be a few things, but now has hundreds of items, each with a dozen data points to display and is now loading really slow. It seems the cause is too many DOM elements.
+
+`>>`
 
 ## How do we fix it?
 

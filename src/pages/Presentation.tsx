@@ -32,9 +32,91 @@ How can we render lists as fast as our users expect?
 
 `, `
 
+# What is slow?
+
+- **< 0.1 seconds:** Feels instant to the user
+- **< 1 second:** Noticeable, but doesn't break the user's flow.
+- **< 10 seconds:** Roughly the limit for keeping a user's attention.
+
+https://www.nngroup.com/articles/response-times-3-important-limits/
+
+`, `
+
 # Why are lists slow?
 
 It's probably that \`map\` function, right?
+
+\`\`\`
+function createElementsBenchmark(count) {
+  return new Array(count).fill('').map(generatePerson)
+}
+\`\`\`
+
+`, `
+
+Looping isn't the problem, what next?
+
+# React
+
+- Declarative code to make it easier to code large SPAs
+- Efficient DOM updates for a snappy UI
+
+`, `
+
+\`\`\`
+// Plain JS
+function changeElement(domId, newContent) {
+  let element = document.getElementById(domId);
+  if (!element) {
+    // fail or should I make a new one?
+    element = document.createElement("div");
+    element.id = domId;
+    element.className = "";
+    document.append(element);
+  }
+
+  element.innerHTML = newContent;
+}
+
+function updateUser(user) {
+  changeElement("user-first", user.first);
+  changeElement("user-last", user.last);
+  changeElement("user-email", user.email);
+}
+
+
+// React, so much cleaner
+function User(user) {
+  return (
+    <div>
+      <div>First: {user.first}</div>
+      <div>Last: {user.last}</div>
+      <div>Email: {user.email}</div>
+    </div>
+  );
+}
+\`\`\`
+
+`, `
+
+# Efficient DOM updates for a snappy UI
+
+- Internal DOM representation
+- Selective and target DOM updates
+  - Don't forget your keys
+
+`, `
+
+# How do we fix it?
+
+- Progressively load additional items with a "Show more" button
+- Pagination to display a limited set of data
+- Virtualized lists
+
+All 3 of these do essentially the same thing: 
+
+> _give React fewer elements to render_.
+`, `
 
 `]
 

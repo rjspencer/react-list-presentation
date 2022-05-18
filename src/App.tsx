@@ -4,12 +4,14 @@ import { Loading } from './components/Loading';
 import { useBenchmark } from './hooks/useBenchmark';
 import { resetBenchmarkContainer } from './hooks/useRawDomBenchmark';
 import { Loops } from './pages/Loops';
+import { Pagination } from './pages/Pagination';
 import { Presentation } from './pages/Presentation';
 import { RawDomUpdate } from './pages/RawDomUpdate';
 import { ReactDomUpdate } from './pages/ReactDomUpdate';
 import { ReactWindow } from './pages/ReactWindow';
+import { ShowMore } from './pages/ShowMore';
 
-type Tab = 'js' | 'react' | 'react-window' | 'loops' | 'presentation'
+type Tab = 'js' | 'react' | 'react-window' | 'showMore' | 'loops' | 'presentation' | 'pagination'
 function App() {
   useBenchmark('App')
 
@@ -34,10 +36,12 @@ function App() {
         <img alt="logo" src="smoreFire.png" height="100" width="100" style={{ borderRadius: '50%', border: '3px solid white' }} />
       </header>
       <nav className="navigation">
-        <button onClick={() => setTab('presentation')}>Presentation</button>
+        <button onClick={() => setTab('presentation')}>*</button>
         <button onClick={() => setTab('loops')}>Loops</button>
         <button onClick={() => setTab('js')}>JavaScript</button>
         <button onClick={() => setTab('react')}>React</button>
+        <button onClick={() => setTab('showMore')}>Show More</button>
+        <button onClick={() => setTab('pagination')}>Pagination</button>
         <button onClick={() => setTab('react-window')}>React Window</button>
       </nav>
       <div className="main">
@@ -47,6 +51,8 @@ function App() {
         {tab === 'react-window' && <ReactWindow />}
         {tab === 'react' && <ReactDomUpdate />}
         {tab === 'js' && <RawDomUpdate />}
+        {tab === 'showMore' && <ShowMore />}
+        {tab === 'pagination' && <Pagination />}
       </div>
     </div>
   );
