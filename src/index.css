@@ -1,13 +1,106 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: "#444444";
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Koulen", cursive;
+  color: #282c34;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+hr {
+  margin: 32px 0;
+}
+
+.app {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.header {
+  background-color: #282c34;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  gap: 32px;
+}
+.header h1 {
+  color: white;
+}
+
+.main {
+  flex: 1 1;
+  overflow-y: auto;
+  padding: 24px 32px;
+}
+
+.testElementWrapper {
+  overflow-y: auto;
+  height: 200px;
+}
+
+.listItem {
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.benchmarkButtonWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  border: 2px solid #282c34;
+  font-size: 18px;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #efefef;
+}
+
+button:hover {
+  background-color: #282c34;
+  color: #efefef;
+}
+
+nav {
+  border-bottom: 5px solid #282c34;
+  background-color: #efefef;
+}
+
+nav button {
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+  border-radius: unset;
+}
+
+nav button.active {
+  background-color: #414855;
+  color: #efefef;
 }
